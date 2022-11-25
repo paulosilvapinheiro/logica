@@ -115,5 +115,52 @@ namespace console
             ret[inputArray.Length + 2] = faltam;
             return ret;
         }
+
+        public int[] OrdenacaoInsertMethod(int[] inputArray){
+
+            int[] ret = new int[inputArray.Length + 3];
+            int contadorvolta = 0;
+            int contadorif = 0;
+
+            int aux;
+            int j;
+            //Método de ordenação
+            for (int i = 1; i < inputArray.Length; i++)
+            {  
+                int chave = inputArray[i];
+                j = i - 1;             
+                while (j >= 0 && inputArray[j] > chave)
+                {
+                    contadorif++;
+                    contadorvolta++;
+                    inputArray[j + 1] = inputArray[j];
+                    inputArray[j] = chave; 
+                    j--;
+                }
+            }
+
+            //Dados de controle
+            for (int i = 1; i < inputArray.Length; i++)
+            {  
+                ret[i] = inputArray[i];
+            }
+            
+            int faltam=0;
+            int test;
+            for (int i = 1; i < inputArray.Length; i++)
+            {
+                //ex: (5 - 1) - (4) = 0 | só ocorrerá 1 ou mais quando tiver pulado um número
+                test = (inputArray[i] - 1) - inputArray[i - 1];
+                if ( test > 0)
+                {
+                    faltam += test;
+                }
+            }
+
+            ret[inputArray.Length] = contadorvolta;
+            ret[inputArray.Length+1] = contadorif;
+            ret[inputArray.Length + 2] = faltam;
+            return ret;
+        }
     }
 }
