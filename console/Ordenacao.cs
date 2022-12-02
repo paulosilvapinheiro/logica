@@ -122,7 +122,7 @@ namespace console
             int contadorvolta = 0;
             int contadorif = 0;
 
-            int aux;
+            // int aux;
             int j;
             //Método de ordenação
             for (int i = 1; i < inputArray.Length; i++)

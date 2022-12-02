@@ -25,9 +25,9 @@ namespace console
 
         public int[] Sequence(int inicio, int tamanhoSequencia)
         {
-            int anterior = 0;
-            int atual = 1;
-            int total = 1;
+            int anterior = 1;
+            int atual = 0;
+            int total = 0;
 
             while (total < inicio)
             {
@@ -74,6 +74,11 @@ namespace console
                 return 0;
             }
 
+        }
+
+        public string Fibonacci_Recursivo(int n_ant, int n_atual, int n_prox){
+
+            return new Recursividade().Fibonacci(n_ant,n_atual,n_prox);
         }
 
         /*
