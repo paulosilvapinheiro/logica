@@ -1,3 +1,26 @@
+
+import sys 
+from pathlib import Path
+file = Path(__file__).resolve()
+parent, root = file.parent, file.parents[2]
+sys.path.append(str(root))
+
+# from LapsCounter import *
+import LapsCounter as lc 
+
+lapsCounter = lc.LapsCounter()
+
+
+def simple_search(list, item):
+  #Itera sequencialmente até achar o 
+  for x in range(len(list)):
+    lapsCounter.volta()
+    if list[x] == item:
+      return x
+    
+  # Item doesn't exist
+  return None
+
 def binary_search(list, item):
   # low and high keep track of which part of the list you'll search in.
   low = 0
@@ -5,6 +28,8 @@ def binary_search(list, item):
 
   # While you haven't narrowed it down to one element ...
   while low <= high:
+    lapsCounter.volta()
+
     # ... check the middle element
     mid = (low + high) // 2
     guess = list[mid]
@@ -21,8 +46,17 @@ def binary_search(list, item):
   # Item doesn't exist
   return None
 
-my_list = [1, 3, 5, 7, 9]
-print binary_search(my_list, 3) # => 1
+my_list = [1, 3, 5, 7, 9, 15, 16, 17, 19, 20]
+vlProcurado = 20
 
-# 'None' means nil in Python. We use to indicate that the item wasn't found.
-print binary_search(my_list, -1) # => None
+print(f"Algoritmo SIMPLE_SEARCH (Valor procurado [ {vlProcurado} ]): Localizado no indice [ {simple_search(my_list, vlProcurado)} ] | Total de voltas [ {lapsCounter.totVoltas()} ]")
+
+lapsCounter.zerar()
+
+# print (binary_search(my_list, 9)) # => 1
+print(f"Algoritmo BINARY_SEARCH (Valor procurado [ {vlProcurado} ]): Localizado no indice [ {binary_search(my_list, vlProcurado)} ] | Total de voltas [ {lapsCounter.totVoltas()} ]")
+
+# 'None' means null in Python. We use to indicate that the item wasn't found.
+print (binary_search(my_list, -1)) # => None
+
+
